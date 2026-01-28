@@ -1,0 +1,20 @@
+.sobre-container {
+    max-width: 900px;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+.foto-perfil {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 5px solid var(--gold);
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .sobre-container { flex-direction: column; text-align: center; }
+}
