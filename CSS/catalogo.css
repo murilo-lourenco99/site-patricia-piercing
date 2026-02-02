@@ -2,8 +2,15 @@
 .tab-btn { padding: 0.8rem 2rem; border: 2px solid var(--gold); background: white; color: var(--gold); border-radius: 2rem; font-weight: bold; cursor: pointer; }
 .tab-btn.active { background: var(--gold); color: white; }
 
-.product-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 1rem 5%; }
+/* Container principal do catálogo e perfurações */
+.product-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); /* FORÇA 2 COLUNAS NO CELULAR */
+    gap: 1rem; /* Espaçamento menor para caber dois cards lado a lado */
+    padding: 1rem 3%; 
+}
 
+/* Ajuste nos cards para ficarem melhores em colunas menores */
 .product-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -11,18 +18,31 @@
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
-    padding-bottom: 2rem; /* Espaço no fundo sem botão */
+    padding-bottom: 1rem;
 }
 
-.img-produto { width: 100%; height: 45vh; min-height: 300px; object-fit: cover; }
-.info-produto { padding: 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+/* Ajuste na altura da imagem para não ficar gigante no celular */
+.img-produto { 
+    width: 100%; 
+    aspect-ratio: 1 / 1; /* Mantém a foto quadrada e proporcional */
+    object-fit: cover; 
+}
 
-.nome-joia { font-size: 1.4rem; font-weight: 600; }
-.preco-joia { color: var(--gold); font-weight: bold; font-size: 1.5rem; }
-.categoria-tag { background: var(--light-bg); color: var(--gold); padding: 0.3rem 1rem; border-radius: 1rem; font-size: 0.8rem; font-weight: bold; }
+.info-produto { 
+    padding: 0.8rem; 
+    text-align: center; 
+}
 
-/* Estilo do Feedback */
-.feedback-cliente { font-style: italic; color: #555; margin-top: 0.5rem; line-height: 1.4; padding: 0 1rem; }
-.feedback-cliente::before, .feedback-cliente::after { content: '"'; color: var(--gold); font-size: 1.5rem; font-weight: bold; }
+.nome-joia { font-size: 1.1rem; } /* Fonte levemente menor para o grid de 2 colunas */
 
-@media (min-width: 768px) { .product-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); } }
+/* RESPONSIVIDADE PARA TELAS DE PC (Acima de 768px) */
+@media (min-width: 768px) { 
+    .product-grid { 
+        grid-template-columns: repeat(4, 1fr); /* 4 COLUNAS NO PC */
+        gap: 2rem;
+        padding: 2rem 5%;
+    } 
+
+    .nome-joia { font-size: 1.4rem; }
+    .img-produto { aspect-ratio: 1 / 1.2; } /* No PC pode ser um pouco mais alta */
+}
