@@ -59,24 +59,69 @@ body {
     text-transform: uppercase;
 }
 
-.main-footer { background: #222; color: white; text-align: center; padding: 2rem; margin-top: auto; }
-
-@media (max-width: 768px) {
-    .main-header { flex-direction: column; gap: 1.5rem; padding: 2rem 1rem; }
+.main-footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
 }
 
-@media (max-width: 480px) {
-    .page-title { 
-        font-size: 1.5rem; margin: 1.5rem 0;
+/* --- Estilos para Celular (Mobile) --- */
+@media (max-width: 768px) {
+    .main-header {
+        display: flex !important;
+        justify-content: center !important; /* Centraliza a logo */
+        align-items: center !important;
+        position: relative;
+        padding: 10px 5%;
+        min-height: 70px;
     }
 
-    .main-header {
-        padding: 1.5rem 1rem; 
+    /* Ícone na Esquerda */
+    .menu-icon {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        position: absolute;
+        left: 5%;
+        z-index: 10001; /* Fica acima de tudo para ser clicável */
+        cursor: pointer;
+    }
+
+    .menu-icon .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        border-radius: 2px;
+        transition: 0.3s;
+    }
+
+    /* Aba Lateral (Menu) */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Escondido na esquerda */
+        width: 60%; /* Ocupa 60% da tela */
+        height: 100vh;
+        background-color: #ffffff !important;
+        z-index: 10000; /* ACIMA DA SOMBRA */
+        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        padding-top: 80px;
+    }
+
+    .main-nav.active {
+        left: 0; /* Desliza para dentro */
     }
 
     .main-nav ul {
-        flex-direction: column; gap: 1rem;
-        display: flex;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 30px;
+        gap: 20px;
+        display: flex !important;
     }
 }
